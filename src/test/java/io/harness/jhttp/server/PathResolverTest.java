@@ -16,6 +16,6 @@ public class PathResolverTest {
         assertEquals("/server/root", resolver.resolveFile("/").toString());
         assertEquals("/server/root", resolver.resolveFile("").toString());
         assertEquals("/server/root/path", resolver.resolveFile("/path").toString());
-        TimeUnit.SECONDS.sleep(x);
+        TimeUnit.SECONDS.sleep(1);
     }
 }
