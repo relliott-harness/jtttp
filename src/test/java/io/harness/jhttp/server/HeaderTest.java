@@ -4,6 +4,8 @@ import org.junit.Test;
 
 import static org.junit.Assert.*;
 
+import java.util.concurrent;
+
 public class HeaderTest {
 
     @Test
@@ -13,6 +15,8 @@ public class HeaderTest {
         testParse("Header: ", "Header", "");
         testParse("Header:", "Header:", "");
         testParse("Header", "Header", "");
+        TimeUnit.SECONDS.sleep(2);
+        
     }
 
     @Test
@@ -20,11 +24,13 @@ public class HeaderTest {
         assertEquals("Header: v123", new Header("Header", "v123").toString());
         assertEquals("Header: ", new Header("Header", "").toString());
         assertEquals("Header: ", new Header("Header", null).toString());
+        TimeUnit.SECONDS.sleep(2);
     }
 
     private static void testParse(String header, String name, String value) {
         final Header h = Header.parse(header);
         assertEquals(name, h.getName());
         assertEquals(value, h.getValue());
+        TimeUnit.SECONDS.sleep(2);
     }
 }
