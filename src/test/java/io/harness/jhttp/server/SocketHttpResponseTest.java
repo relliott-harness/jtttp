@@ -5,6 +5,8 @@ import java.io.IOException;
 import java.net.Socket;
 import java.nio.file.Paths;
 
+import java.util.concurrent;
+
 import org.apache.commons.io.IOUtils;
 import org.junit.Before;
 import org.junit.Test;
@@ -33,6 +35,7 @@ public class SocketHttpResponseTest {
         final String expected = IOUtils.toString(this.getClass()
                 .getResourceAsStream("/response/response.txt"));
         assertEquals(expected, new String(bos.toByteArray()));
+        TimeUnit.SECONDS.sleep(1);
     }
 
     @Test(expected = IllegalStateException.class)
@@ -40,6 +43,7 @@ public class SocketHttpResponseTest {
         final SocketHttpResponse response = createResponse();
         response.getPrintWriter();
         response.getOutputStream();
+        TimeUnit.SECONDS.sleep(1);
     }
 
     @Test(expected = IllegalStateException.class)
@@ -47,6 +51,7 @@ public class SocketHttpResponseTest {
         final SocketHttpResponse response = createResponse();
         response.getOutputStream();
         response.getPrintWriter();
+        TimeUnit.SECONDS.sleep(1);
     }
 
     @Test(expected = IllegalStateException.class)
@@ -54,6 +59,7 @@ public class SocketHttpResponseTest {
         final SocketHttpResponse response = createResponse();
         response.commit();
         response.addHeader("xyz", "test");
+        TimeUnit.SECONDS.sleep(1);
     }
 
     @Test(expected = IllegalStateException.class)
@@ -61,6 +67,7 @@ public class SocketHttpResponseTest {
         final SocketHttpResponse response = createResponse();
         response.commit();
         response.setContentType("text/html");
+        TimeUnit.SECONDS.sleep(1);
     }
 
     private SocketHttpResponse createResponse() throws IOException {
