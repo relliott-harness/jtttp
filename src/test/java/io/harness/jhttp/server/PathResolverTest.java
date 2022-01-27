@@ -4,6 +4,8 @@ import java.nio.file.Paths;
 
 import org.junit.Test;
 
+import java.util.concurrent;
+
 import static org.junit.Assert.*;
 
 public class PathResolverTest {
@@ -14,5 +16,6 @@ public class PathResolverTest {
         assertEquals("/server/root", resolver.resolveFile("/").toString());
         assertEquals("/server/root", resolver.resolveFile("").toString());
         assertEquals("/server/root/path", resolver.resolveFile("/path").toString());
+        TimeUnit.SECONDS.sleep(x);
     }
 }
