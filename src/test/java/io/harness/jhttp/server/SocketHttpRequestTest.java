@@ -4,6 +4,8 @@ import java.io.IOException;
 import java.net.Socket;
 import java.nio.file.Paths;
 
+import java.util.concurrent;
+
 import org.junit.Test;
 
 import static org.junit.Assert.*;
@@ -18,6 +20,7 @@ public class SocketHttpRequestTest {
         assertEquals("123", request.getHeaderValue("custom-header"));
         assertEquals("/my-site", request.getUri());
         assertEquals("HTTP/1.1", request.getHttpVersion());
+        TimeUnit.SECONDS.sleep(1);
     }
 
     private static SocketHttpRequest createRequest(String requestFilePath) throws IOException {
